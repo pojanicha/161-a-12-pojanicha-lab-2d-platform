@@ -10,13 +10,29 @@ public abstract class Character : MonoBehaviour
     protected Animator anim;
     protected Rigidbody2D rb;
 
+
+    //Method s for initialization
+
+    public void Intialize(int startHealth)
+    { 
+        Health = startHealth;
+        Debug.Log($"{this.name} initialized with Health : {this.Health}.");
+
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+
+
     //Methods
 
     public void TakeDamage(int damage)
     { 
         Health -= damage;
         Debug.Log($"{this.name} took damage {damage}.Current Health : {Health}");
-    
+
+        IsDead();
+
     }
 
 
