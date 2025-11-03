@@ -4,17 +4,25 @@ using UnityEngine.UI;
 
 public class UIPlayer : MonoBehaviour
 {
-
     [SerializeField] private Slider slider;
     [SerializeField] private Player player;
 
+
+    public void UpdateHealthUI()
+    {
+        if (slider == null || player == null) return;
+        {
+            slider.maxValue = player.MaxHealth;
+            slider.value = player.Health;
+        }
+    }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       slider.maxValue = player.Health;
-       slider.value = player.Health;
+     
+       
 
     }
 
@@ -22,7 +30,6 @@ public class UIPlayer : MonoBehaviour
     void Update()
     {
         slider.value = player.Health;
-
     }
 }
 

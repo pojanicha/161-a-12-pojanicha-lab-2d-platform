@@ -11,18 +11,6 @@ public class Player : Character, IShootable
 
 
 
-    [SerializeField] UIPlayer healthBar;
-
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        healthBar = GetComponentInChildren<UIPlayer>();
-    }
-
-
-
-
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,6 +19,7 @@ public class Player : Character, IShootable
         base.Intialize(100);
         ReloadTime = 1.0f;
         WaitTime = 0.0f;
+        FindAnyObjectByType<UIPlayer>()?.UpdateHealthUI();
     }
 
     public void OnHitWithenemy(Enemy enemy)

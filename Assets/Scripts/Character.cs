@@ -6,6 +6,8 @@ public abstract class Character : MonoBehaviour
 
     private int health;
     public int Health { get => health; set => health = (value < 0) ? 0 : value; }
+    public int MaxHealth { get; set; }
+
 
     protected Animator anim;
     protected Rigidbody2D rb;
@@ -16,6 +18,7 @@ public abstract class Character : MonoBehaviour
     public void Intialize(int startHealth)
     { 
         Health = startHealth;
+        MaxHealth = startHealth;
         Debug.Log($"{this.name} initialized with Health : {this.Health}.");
 
         anim = GetComponent<Animator>();
