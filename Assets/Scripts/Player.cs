@@ -59,7 +59,7 @@ public class Player : Character, IShootable
 
     public void Shoot()
     {
-        if (Input.GetButtonDown("Firel") && WaitTime >= ReloadTime)
+        if (Input.GetButtonDown("Fire1") && WaitTime >= ReloadTime)
         {
             var bullet = Instantiate(Bullet, shootPoint.position, Quaternion.identity);
             Banana banana = bullet.GetComponent<Banana>();
