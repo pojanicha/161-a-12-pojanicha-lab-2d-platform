@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class Player : Character, IShootable
 {
     [field: SerializeField] public GameObject Bullet { get; set; }
@@ -9,6 +10,15 @@ public class Player : Character, IShootable
     [field: SerializeField] public float WaitTime { get; set; }
 
 
+
+    [SerializeField] UIPlayer healthBar;
+
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        healthBar = GetComponentInChildren<UIPlayer>();
+    }
 
 
 
@@ -27,7 +37,6 @@ public class Player : Character, IShootable
     {
 
         TakeDamage(enemy.Damagehit);
-
     }
 
 
