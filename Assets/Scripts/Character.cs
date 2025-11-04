@@ -4,8 +4,11 @@ public abstract class Character : MonoBehaviour
 {
     //attribute
 
-    private int health;
-    public float Health { get; set; }
+    private float health;
+    public float Health 
+    { get => health; 
+      set => health = (value < 0 ) ? 0: value;}
+
     public float MaxHealth { get; set; }
 
 
@@ -34,7 +37,7 @@ public abstract class Character : MonoBehaviour
         Health = startHealth;
         MaxHealth = startHealth;
         Debug.Log($"{this.name} initialized with Health : {this.Health}.");
-
+        healthBar = GetComponentInChildren<UIHealthBar>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -47,7 +50,16 @@ public abstract class Character : MonoBehaviour
     { 
         Health -= damage;
         Debug.Log($"{this.name} took damage {damage}.Current Health : {Health}");
-        healthBar.UpdateHealthBar(Health, MaxHealth);
+
+        if (healthBar != null)
+
+        {
+
+            healthBar.UpdateHealthBar(Health, MaxHealth);
+
+        }
+       
+
         IsDead();
 
     }
