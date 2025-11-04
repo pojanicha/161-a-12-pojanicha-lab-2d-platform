@@ -22,7 +22,6 @@ public class Ant : Enemy
     {
         base.Intialize(20);
         Damagehit = 20;
-        FindAnyObjectByType<UIAnt>()?.UpdateHealthUI();
 
         //Set speed and direction of the ant
         velocity = new Vector2(-1.0f, 0.0f);

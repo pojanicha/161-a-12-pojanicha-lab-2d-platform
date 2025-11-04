@@ -10,7 +10,7 @@ public class Player : Character, IShootable
     [field: SerializeField] public float WaitTime { get; set; }
 
 
-
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,7 +19,6 @@ public class Player : Character, IShootable
         base.Intialize(100);
         ReloadTime = 1.0f;
         WaitTime = 0.0f;
-        FindAnyObjectByType<UIPlayer>()?.UpdateHealthUI();
     }
 
     public void OnHitWithenemy(Enemy enemy)

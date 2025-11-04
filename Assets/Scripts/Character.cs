@@ -5,12 +5,26 @@ public abstract class Character : MonoBehaviour
     //attribute
 
     private int health;
-    public int Health { get => health; set => health = (value < 0) ? 0 : value; }
-    public int MaxHealth { get; set; }
+    public float Health { get; set; }
+    public float MaxHealth { get; set; }
 
 
     protected Animator anim;
     protected Rigidbody2D rb;
+
+
+    [SerializeField] UIHealthBar healthBar;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        healthBar = GetComponent<UIHealthBar>();
+    }
+
+
+
+
+
 
 
     //Method s for initialization
@@ -33,7 +47,7 @@ public abstract class Character : MonoBehaviour
     { 
         Health -= damage;
         Debug.Log($"{this.name} took damage {damage}.Current Health : {Health}");
-
+        healthBar.UpdateHealthBar(Health, MaxHealth);
         IsDead();
 
     }
@@ -76,7 +90,7 @@ public abstract class Character : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        healthBar.UpdateHealthBar(Health, MaxHealth);
     }
 
     // Update is called once per frame
