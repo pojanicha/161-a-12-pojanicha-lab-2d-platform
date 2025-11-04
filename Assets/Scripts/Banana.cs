@@ -26,7 +26,7 @@ public class Banana : Weapon
     void Start()
     {
         speed = 4.0f * GetShootPoint();
-        damage = 10;
+        damage = 30;
     }
 
     // Update is called once per frame

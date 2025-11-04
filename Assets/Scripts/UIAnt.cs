@@ -19,18 +19,18 @@ public class UIAnt : MonoBehaviour
 
         slider.gameObject.SetActive(true);
         slider.maxValue = ant.MaxHealth;
-        slider.value = ant.Health;
+        slider.value = ant.MaxHealth;
     }
 
     void Update()
     {
         if (slider == null) return;
 
-        // ถ้า Ant ถูกทำลายหรือปิด → ปิด Slider
         if (ant == null || !ant.gameObject.activeInHierarchy || ant.Health <= 0)
         {
             slider.gameObject.SetActive(false);
             return;
+
         }
     }
 
@@ -39,6 +39,7 @@ public class UIAnt : MonoBehaviour
     {
         if (slider == null || ant == null) return;
         slider.maxValue = ant.MaxHealth;
+        slider.value = ant.Health;
     }
 }
 
